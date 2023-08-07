@@ -1,8 +1,12 @@
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
-public class GoogleSearchStepDefs {
+public class TestAssignment2{
 
     @Given("I am on the Google homepage")
     public void i_am_on_the_google_homepage() {
