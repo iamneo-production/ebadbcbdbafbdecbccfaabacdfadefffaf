@@ -5,9 +5,11 @@ import java.net.URL;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -21,7 +23,7 @@ public class SpringApplicationTests {
     public void beforeTest() throws Exception
      {
    // replace seleniumhost and port with correct values
-        driver = new RemoteWebDriver(new URL("http://<seleniumhost:port>/"), chromeOptions);
+        driver = new RemoteWebDriver(new URL("34.85.242.216:4444"), chromeOptions);
         driver.manage().window().maximize();
     }
 
@@ -31,9 +33,7 @@ public class SpringApplicationTests {
 
         // Disable Chrome browser notifications
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-notifications");
-
-        // Initialize ChromeDriver
+       // options.addArguments("--disable-notifications");
         driver = new ChromeDriver(options);
     }
 
