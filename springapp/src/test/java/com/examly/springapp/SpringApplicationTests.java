@@ -23,7 +23,7 @@ public class SpringApplicationTests {
     public void beforeTest() throws Exception
      {
    // replace seleniumhost and port with correct values
-        driver = new RemoteWebDriver(new URL("34.85.242.216:4444"), chromeOptions);
+        driver = new RemoteWebDriver(new URL("http://34.85.242.216:4444"), chromeOptions);
         driver.manage().window().maximize();
     }
 
