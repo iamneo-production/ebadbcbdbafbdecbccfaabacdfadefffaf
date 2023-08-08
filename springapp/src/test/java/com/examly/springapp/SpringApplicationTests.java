@@ -16,23 +16,23 @@ import org.testng.annotations.AfterTest;
 
 public class SpringApplicationTests {
 
-    ChromeOptions chromeOptions = new ChromeOptions();
+    ChromeOptions options = new ChromeOptions();
     WebDriver driver = null;
 
     @BeforeTest
     public void beforeTest() throws Exception
      {
    // replace seleniumhost and port with correct values
-        driver = new RemoteWebDriver(new URL("http://34.85.242.216:4444"), chromeOptions);
+        driver = new RemoteWebDriver(new URL("http://34.85.242.216:4444"), options);
         driver.manage().window().maximize();
     }
 
     public void openChromeBrowser() {
         // Set ChromeDriver executable path
-        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+       // System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
 
         // Disable Chrome browser notifications
-        ChromeOptions options = new ChromeOptions();
+       // ChromeOptions options = new ChromeOptions();
        // options.addArguments("--disable-notifications");
         driver = new ChromeDriver(options);
     }
