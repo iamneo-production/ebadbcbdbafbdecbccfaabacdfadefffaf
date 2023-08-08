@@ -56,6 +56,7 @@ public class SpringApplicationTests {
     public void verifyImageResults(String query) {
         String pageTitle = driver.getTitle();
         assert pageTitle.contains(query + " - Google Search");
+        //assert pageTitle.contains(query + " - Google Search");
     }
 
     @AfterTest
