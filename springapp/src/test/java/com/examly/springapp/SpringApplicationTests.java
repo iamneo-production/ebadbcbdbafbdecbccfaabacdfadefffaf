@@ -11,6 +11,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeTest;
+import static org.junit.Assert.assertEquals;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 
@@ -18,7 +19,7 @@ public class SpringApplicationTests {
 
     ChromeOptions options = new ChromeOptions();
     WebDriver driver = null;
-
+    private String pageTitle;
     @BeforeTest
     public void beforeTest() throws Exception
      {
