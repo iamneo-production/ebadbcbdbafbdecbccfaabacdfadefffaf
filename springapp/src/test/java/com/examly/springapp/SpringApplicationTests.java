@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.chrome.*;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeTest;
@@ -20,6 +21,7 @@ public class SpringApplicationTests {
     ChromeOptions options = new ChromeOptions();
     WebDriver driver = null;
     private String pageTitle;
+    options.setBrowserVersion(115.0);
     @BeforeTest
     public void beforeTest() throws Exception
      {
