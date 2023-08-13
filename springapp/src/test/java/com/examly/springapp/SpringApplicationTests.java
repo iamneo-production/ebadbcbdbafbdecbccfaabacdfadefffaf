@@ -21,12 +21,12 @@ public class SpringApplicationTests {
     ChromeOptions options = new ChromeOptions();
     WebDriver driver = null;
     private String pageTitle;
-    options.setBrowserVersion(115.0);
+    //options.setBrowserVersion(115.0);
     @BeforeTest
     public void beforeTest() throws Exception
      {
    // replace seleniumhost and port with correct values
-        driver = new RemoteWebDriver(new URL("http://localhost/127.0.0.1:4444"), options);
+        driver = new RemoteWebDriver(new URL("http://localhost/127.0.0.1:80"), options);
         driver.manage().window().maximize();
     }
 
