@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
-
+import org.openqa..selenium.chrome.ChromeDriver;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
@@ -46,67 +46,33 @@ public class GilletteTests {
 
         // Create ChromeDriver instance
         // driver = new ChromeDriver();
-        driver = base.openBrowser();
+        // driver = base.openBrowser();
         
-        driver.manage().window().maximize();
-        reporter = Reporter.generateExtentReport();
+        // driver.manage().window().maximize();
+        // reporter = Reporter.generateExtentReport();
     }
     
-    @Given("I am on the Gillette website")
-    public void iAmOnTheGilletteWebsite() {
-        driver.get("https://www.gillette.co.in/en-in");
-    }
-    
-    @When("^I hover on from the top navigation$")
-    public void iHoverOnFromTheTopNavigation() throws MalformedURLException {
-        ExtentTest test = reporter.createTest("Homepage", "Executing step 1");
-        homePage.hoverToProducts(driver, test);
-        log.info("Hovered");
+    driver = new ChromeDriver();
+
+    @Given("User navigates to the webpage")
+    public void navigateToWebpage() {
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        driver = new ChromeDriver();
+        driver.get("https://example.com"); // Replace with your webpage URL
     }
 
-    @When("^I choose \"([^\"]*)\" under \"([^\"]*)\" from the drop-down$")
-    public void iChooseUnderFromTheDropDown(String option, String dropdown) {
-        ExtentTest test = reporter.createTest("Homepage", "Executing step 2");
-        homePage.clickBrands(driver, test);
-        log.info("Clicked MACH3");
+    @When("The page title is captured")
+    public void capturePageTitle() {
+        String pageTitle = driver.getTitle();
+        // Store pageTitle or perform any necessary verification
     }
 
-    @Then("^I should see \"([^\"]*)\" under the products list$")
-    public void iShouldSeeUnderTheProductsList(String expectedText) {
-        ExtentTest test = reporter.createTest("Homepage", "Executing step 3");
-        homePage.findRazorTurbo(driver, test);
-        log.info("Finding razor turbo");
+    @Then("The page title should contain {string}")
+    public void verifyPageTitle(String expectedTitle) {
+        String pageTitle = driver.getTitle();
+        assert pageTitle.contains(expectedTitle);
     }
 
-    @When("^I search for \"([^\"]*)\" using the search option$")
-    public void iSearchForUsingTheSearchOption(String searchText) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement searchIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"searchIcon\"]")));
-        searchIcon.click();
-        WebElement searchInput = driver.findElement(By.xpath("//*[@id=\"search-box-input\"]"));
-        searchInput.sendKeys(searchText);
-        searchInput.submit();
-        log.info("Searched for " + searchText);
-    }
-
-    @Then("^I should see \"([^\"]*)\" at the top of the search results$")
-    public void iShouldSeeAtTheTopOfTheSearchResults(String expectedText) {
-        WebElement searchResults = driver.findElement(By.xpath("//*[@id=\"main-content\"]/div/h1"));
-        String searchResultsText = searchResults.getText();
-        log.info("Got the first result");
-    }
-
-    @When("^I click on \"([^\"]*)\" under \"([^\"]*)\" in the footer$")
-    public void iClickOnUnderInTheFooter(String link, String section) {
-        WebElement sectionElement = driver.findElement(By.xpath("//*[@id=\"footerContent\"]/div/div[1]/div[1]/ul/li[2]/a"));
-        sectionElement.click();
-    }
-
-    @Then("^I should see \"([^\"]*)\" under the list of articles under styling$")
-    public void iShouldSeeUnderTheListOfArticlesUnderStyling(String expectedText) {
-        WebElement articlesList = driver.findElement(By.xpath("//*[@id=\"tabItem_1\"]"));
-        String articlesListText = articlesList.getText();
-    }
 
     @After
     public void tearDown() {
