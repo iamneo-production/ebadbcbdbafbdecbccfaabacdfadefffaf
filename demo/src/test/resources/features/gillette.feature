@@ -1,21 +1,32 @@
-Feature: Gillette Website Tests
+Feature: Webpage Testing
 
-  Background:
-    Given I am on the Gillette website
+  Scenario: Verify page title
+    Given User navigates to the webpage
+    When The page title is captured
+    Then The page title should contain "Expected Title"
 
-  Scenario Outline: Verify the search functionality
-    When I search for "<searchText>" using the search option
-    Then I should see "Results For Razor'" at the top of the search results
-    
-    Examples:
-    | searchText |
-    | Razor      |
+  Scenario: Search Google for images
+    Given User navigates to Google
+    When User searches for "Images"
+    Then Search results for images are displayed
 
-  Scenario: Verify the display of Gillette MACH3 Turbo under products list
-    When I hover on from the top navigation
-    And I choose "MACH3" under "By Brands" from the drop-down
-    Then I should see "Gillette MACH3 Turbo" under the products list
+  Scenario: Perform Google searches using URL query parameters
+    Given User navigates to Google with query parameters
+    When User searches with the provided query
+    Then Search results matching the query are displayed
 
-  Scenario: Verify the presence of "Facial Hair Styles: The Anchor Beard" under styling articles
-    When I click on "Styling" under "Learn" in the footer
-    Then I should see "Facial Hair Styles: The Anchor Beard" under the list of articles under styling
+  Scenario: Basic tests against Wikipedia
+    Given User navigates to Wikipedia
+    When User searches for "Picking a language"
+    Then Search results link to the correct articles
+
+  Scenario: Viewing page 5
+    Given User navigates to a webpage
+    When User selects page 5
+    Then Page 5 should be displayed
+
+  Scenario: Basic service-level testing using REST Assured
+    Given REST endpoint "https://jsonplaceholder.typicode.com/posts/1"
+    When GET request is sent
+    Then Response status code should be 200
+
